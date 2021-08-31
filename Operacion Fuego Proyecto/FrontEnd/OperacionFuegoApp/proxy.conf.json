@@ -1,0 +1,8 @@
+{
+"/api/*": {
+    "target":"https://operacion-fuego-324122.rj.r.appspot.com/",
+    "secure":false,
+    "logLevel":"debug",
+    "changeOrigin":true
+  }
+}

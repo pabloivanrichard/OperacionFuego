@@ -1,0 +1,131 @@
+<ul class="alert alert-danger" *ngIf="errores?.length > 0">
+  <li *ngFor="let err of errores">
+    {{ err }}
+  </li>
+  </ul>
+  
+  <div class="card bg-dark text-white">
+  <div class="card-header bg-warning"><span id="titulos">
+  <strong>Operación Fuego de Quasar</strong></span></div>
+  <div class="card-body">
+  
+    <form #operacionform="ngForm">
+
+
+         <div class="form-group row">
+        <label for="nave" class="col-form-label col-sm-2">Nave</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="nave" name="nave" #nombre="ngModel" disabled> <!-- required -->
+          <div class="alert alert-danger" *ngIf="nave.invalid && (nave.dirty || nave.touched)">
+            <div *ngIf="nave.errors.required">
+            Nombre es Requerido
+            </div>
+          </div>
+        </div>
+        <button id="btn-next" class="btn btn-rounded btn-primary" type="button" (click)='getSatelites()'>
+          Ver Satelites
+        </button>
+      </div>
+      <div id="formsol">
+        <table class="table table-bordered table-striped" *ngIf="satelites?.length>0">
+          <thead>
+            <tr>
+              <th>idSatelite</th>
+              <th>Nombre</th>
+              <th>distance</th>
+              <th>Ver Posicion</th>
+              <th>Ver Mensaje</th>
+              <th>Top Split</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let satelite of satelites">
+              <td>{{ satelite.idSatelite }}</td>
+              <td>{{ satelite.name }}</td>
+              <td>{{ satelite.distance }}</td>
+    
+              <td>
+                <button type="button" name="Ver Posicion" class="btn btn-primary btn-sm" (click)='verPosicion(satelite.idSatelite)'>Ver Posiocion</button>
+              </td>
+              <td>
+                <button type="button" name="Ver Mensaje" (click)='verMessage(satelite.name)' class="btn btn-primary btn-sm">Ver Mensaje</button>
+              </td>
+              <td>
+                <button type="button" name="Ver Mensaje Top_Split" (click)='verMessagetopSplit(satelite.name)' class="btn btn-primary btn-sm">Top_Split POST</button>
+              </td>
+              <td>
+                <button type="button" name="Ver Mensaje Top_Split" (click)='verMessagetopSplit1(satelite.name)' class="btn btn-primary btn-sm">Top_Split GET</button>
+              </td>      
+            </tr>
+          </tbody>
+        </table>
+
+       
+      </div>
+          <div>
+            <label for="position x" class="col-form-label col-sm-2">Position X</label>
+            <input type="text" class="form-control" [(ngModel)]="position.x" name="positionx"  disabled> <!-- Position X -->
+            <label for="position y" class="col-form-label col-sm-2">Position Y</label>
+            <input type="text" class="form-control" [(ngModel)]="position.y" name="positiony"  disabled> <!-- Position Y -->
+            <label for="mensaje" class="col-form-label col-sm-7">Mensaje</label>
+            <input type="text" class="form-control" [(ngModel)]="satelite.message" name="message"  disabled> <!-- MessageSatelite -->
+          </div>
+    </form>
+
+
+      <div>
+        <button id="btn-next" class="btn btn-rounded btn-primary" type="button" (click)='topsecret2()'>
+          Top Secret
+        </button>
+      </div>
+
+      <label for="mensajeresuelto" class="col-form-label col-sm-7">Mensaje Resuelto</label>
+      <input type="text" class="form-control" [(ngModel)]="topsecretresponse.message" name="topsecretmessage"  disabled> <!-- Message Resuelto -->
+      <div>
+
+
+      </div>
+  </div>
+  </div>
+
+  <div class="card bg-dark text-white">
+    <div class="card-header bg-warning"><span id="titulossplit">
+    <strong>Satelite Top Split POST</strong></span></div>
+    <div class="card-body">
+  <form #operacionform="ngForm" >
+    <label for="titulosplit" class="col-form-label col-sm-7">Satelite Top Split</label>
+    <input type="text" class="form-control" [(ngModel)]="satelitename" name="satelitename"  disabled> <!-- satelitename Top Split -->
+
+    <label for="distancetopsplit" class="col-form-label col-sm-7">Distance Top Split</label>
+    <input type="text" class="form-control" [(ngModel)]="satelitetop_split.distance" name="distancetopsplit"  disabled> <!-- Distance Top Split -->
+    
+    <label for="messagetopsplit" class="col-form-label col-sm-7">Message Top Split</label>
+    <input type="text" class="form-control" [(ngModel)]="satelitetop_split.message" name="messagetopsplit"  disabled> <!-- Message Top Split -->
+
+  </form>
+</div>
+</div>
+
+<div class="card bg-dark text-white">
+  <div class="card-header bg-warning"><span id="titulossplitget">
+  <strong>Satelite Top Split GET</strong></span></div>
+  <div class="card-body">
+<form #operacionformGet="ngForm" >
+  
+  <div>
+    <label for="titulosplitget" class="col-form-label col-sm-7">Satelite Top Split GET</label>
+    <input type="text" class="form-control" [(ngModel)]="satelitenameget" name="satelitenameget"  disabled> <!-- satelitename Top Split -->
+    <label for="mensaje get" class="col-form-label col-sm-7">Mensaje</label>
+    <input type="text" class="form-control" [(ngModel)]="topsecretresponseget.message" name="messageget"  disabled> <!-- MessageSatelite -->
+  </div>
+  
+  <div>
+    <button id="btn-next" class="btn btn-rounded btn-primary" type="button" (click)='finalizar()' style="display: block; margin: 0 auto;"  >
+      Finalizar
+    </button>
+  </div>
+
+</form>
+</div>
+</div>
+

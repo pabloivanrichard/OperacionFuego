@@ -1,0 +1,31 @@
+<ul class="alert alert-danger" *ngIf="errores?.length > 0">
+  <li *ngFor="let err of errores">
+    {{ err }}
+  </li>
+  </ul>
+  
+  <div class="card bg-dark text-white">
+  <div class="card-header bg-warning"><span id="titulos">
+  <strong>Operación Fuego de Quasar</strong></span></div>
+  <div class="card-body">
+  
+    <form #personaForm="ngForm">
+
+
+         <div class="form-group row">
+        <label for="nombres" class="col-form-label col-sm-2">Postulante</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="nombres" name="nombres" #nombre="ngModel"> <!-- required -->
+          <div class="alert alert-danger" *ngIf="nombres.invalid && (nombres.dirty || nombres.touched)">
+            <div *ngIf="nombres.errors.required">
+            Nombre es Requerido
+            </div>
+          </div>
+        </div>
+      </div>
+      <p id="idparrafo">
+        Muchas Gracias Mercado Libre
+    </form>
+ 
+  </div>
+  </div>

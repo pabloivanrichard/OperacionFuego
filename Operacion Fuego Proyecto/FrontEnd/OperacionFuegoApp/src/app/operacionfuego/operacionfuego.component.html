@@ -1,0 +1,43 @@
+<ul class="alert alert-danger" *ngIf="errores?.length > 0">
+  <li *ngFor="let err of errores">
+    {{ err }}
+  </li>
+  </ul>
+  
+  <div class="card bg-dark text-white">
+  <div class="card-header bg-warning"><span id="titulos">
+  <strong>Operación Fuego de Quasar</strong></span></div>
+  <div class="card-body">
+  
+    <form #personaForm="ngForm">
+
+
+         <div class="form-group row">
+        <label for="nombres" class="col-form-label col-sm-2">Postulante</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="nombres" name="nombres" #nombre="ngModel"> <!-- required -->
+          <div class="alert alert-danger" *ngIf="nombres.invalid && (nombres.dirty || nombres.touched)">
+            <div *ngIf="nombres.errors.required">
+            Nombre es Requerido
+            </div>
+          </div>
+        </div>
+      </div>
+      <p id="idparrafo">
+        Han Solo ha sido recientemente nombrado General de la Alianza Rebelde y busca dar un gran golpe contra el Imperio Galáctico para
+        reavivar la llama de la resistencia
+        El servicio de inteligencia rebelde ha detectado un llamado de auxilio de
+        una nave portacarga imperial a la deriva en un campo de asteroides. El
+        manifiesto de la nave es ultra clasificado, pero se rumorea que
+        transporta raciones y armamento para una legión entera
+      </p>
+
+      <button id="btn-next" class="btn btn-rounded btn-primary" type="button" (click)='siquiente()' style="display: block; margin: 0 auto;"  >
+        Siguiente
+      </button>
+    
+    </form>
+ 
+  </div>
+  </div>
+
